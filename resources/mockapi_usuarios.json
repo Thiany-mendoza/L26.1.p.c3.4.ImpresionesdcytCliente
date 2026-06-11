@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "cedula": "11",
+    "nombre": "Usuario 1"
+  },
+  {
+    "id": "2",
+    "cedula": "22",
+    "nombre": "Usuario 2"
+  },
+  {
+    "id": "3",
+    "cedula": "33",
+    "nombre": "Usuario 3"
+  },
+  {
+    "id": "4",
+    "cedula": "44",
+    "nombre": "Usuario 4"
+  },
+  {
+    "id": "5",
+    "cedula": "55",
+    "nombre": "Usuario 5"
+  }
+]
