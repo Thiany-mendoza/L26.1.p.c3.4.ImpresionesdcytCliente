@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impresiones DCyT: Cliente</title>
+  <link rel="stylesheet" href="./src/index.css" />
+</head>
+
+<body>
+  <div class="pc-viewport">
+
+    <div class="app-content">
+      <h1>Sistema de Pedidos de Reproducción - Campus Central</h1>
+
+      <div class="panel-columns">
+        <!-- Columna Izquierda: Cliente y Productos -->
+        <div>
+          <!-- Sección Cliente -->
+          <div class="section-panel">
+            <span class="panel-legend">Cliente</span>
+            <div class="form-group" style="margin-top: 5px;">
+              <label for="cliente_inNombre">Nombre del Cliente:</label>
+              <input type="text" id="cliente_inNombre" placeholder="Nombre completo" />
+            </div>
+          </div>
+
+          <!-- Sección Ver Productos -->
+          <div class="section-panel">
+            <span class="panel-legend">Ver productos</span>
+            <button id="cliente_btVerProductos" class="retro-btn" style="width: 100%; margin-top: 5px;">[Ver productos]</button>
+            <div id="cliente_panelProductos" hidden style="margin-top: 10px;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Precio ($)</th>
+                  </tr>
+                </thead>
+                <tbody id="cliente_tblProductos">
+                  <!-- Cargado dinámicamente -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Sección Entrada de Datos -->
+          <div class="section-panel">
+            <span class="panel-legend">Entrada de datos</span>
+            <div class="form-group" style="margin-top: 5px;">
+              <label for="cliente_inCodigo">Código:</label>
+              <input type="text" id="cliente_inCodigo" placeholder="Ej: R01" />
+            </div>
+            <div class="form-group">
+              <label for="cliente_inCantidad">Cantidad:</label>
+              <input type="number" id="cliente_inCantidad" min="1" value="1" />
+            </div>
+            <div class="btn-row">
+              <button id="cliente_btAgregarItem" class="retro-btn">[Agregar]</button>
+              <button id="cliente_btEliminarItem" class="retro-btn">[Eliminar]</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Pedido y Pago -->
+        <div>
+          <!-- Sección Lista de productos agregados -->
+          <div class="section-panel">
+            <span class="panel-legend">Lista de productos agregados</span>
+            <ul id="cliente_lstAgregados" class="item-list" style="margin-top: 5px; min-height: 40px;">
+              <!-- Ítems agregados dinámicamente -->
+            </ul>
+          </div>
+
+          <!-- Sección Total a pagar -->
+          <div class="section-panel">
+            <span class="panel-legend">Total a pagar</span>
+            <div class="totals-box" style="margin-top: 5px;">
+              <div class="bold-total">Total: $<span id="cliente_txtTotalUsd">0.00</span></div>
+              <div>Tasa BCV: <span id="cliente_txtTasaBcv">30.00</span> Bs/$</div>
+              <div class="bold-total">Total: <span id="cliente_txtTotalBs">0.00</span> Bs</div>
+              <br />
+              <div class="bold-total">Total: <span id="cliente_txtTotalBsDup">0.00</span> Bs</div>
+            </div>
+          </div>
+
+          <!-- Sección Método de pago -->
+          <div class="section-panel">
+            <span class="panel-legend">Método de pago</span>
+            <div class="form-group" style="margin-top: 5px;">
+              <select id="cliente_inMetodo">
+                <option value="Pago Móvil">Pago Móvil</option>
+                <option value="Transferencia">Transferencia</option>
+                <option value="Efectivo">Efectivo</option>
+              </select>
+            </div>
+            <div id="cliente_panelPagoMovil">
+              <div class="form-group">
+                <label for="cliente_inPmCedula">Cédula:</label>
+                <input type="text" id="cliente_inPmCedula" placeholder="Cédula del titular" />
+                <label for="cliente_inPmTelefono" style="margin-left: 5px;">Teléfono:</label>
+                <input type="text" id="cliente_inPmTelefono" placeholder="Teléfono" />
+              </div>
+              <div class="form-group">
+                <label for="cliente_inPmBanco">Banco:</label>
+                <input type="text" id="cliente_inPmBanco" placeholder="Banco emisor" />
+              </div>
+              <div class="form-group">
+                <label for="cliente_inPmRef">Referencia:</label>
+                <input type="text" id="cliente_inPmRef" placeholder="Número de referencia" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Hacer Pedido -->
+          <button id="cliente_btHacerPedido" class="retro-btn retro-btn-large" style="margin-top: 10px;">Hacer pedido</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module">
+    import Cl_cSolicitud from "./dist/controllers/Cl_cSolicitud.js";
+    import Cl_vSolicitud from "./dist/views/Cl_vSolicitud.js";
+
+    const vistaSolicitud = new Cl_vSolicitud();
+    new Cl_cSolicitud(vistaSolicitud);
+  </script>
+</body>
+
+</html>
